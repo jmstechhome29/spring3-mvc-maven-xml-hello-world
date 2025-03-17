@@ -4,11 +4,12 @@
 	<groupId>com.madhu</groupId>
 	<artifactId>spring3-mvc-maven-xml-hello-world</artifactId>
 	<packaging>war</packaging>
-	<version>1.2</version>
+	<version>1.4</version>
 	<name>spring3 mvc maven</name>
 
 	<properties>
-		<jdk.version>1.6</jdk.version>
+		 <maven.compiler.source>1.8</maven.compiler.source>
+ <maven.compiler.target>1.8</maven.compiler.target>
 		<spring.version>3.2.13.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
 	</properties>
@@ -35,12 +36,16 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
+                                <configuration>
+               			 <source>1.8</source>
+                		 <target>1.8</target>
+            			</configuration>
 			</plugin>
+			<plugin>
+                              <groupId>org.apache.maven.plugins</groupId>
+                              <artifactId>maven-war-plugin</artifactId>
+                              <version>3.3.1</version>
+                        </plugin>
 
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
