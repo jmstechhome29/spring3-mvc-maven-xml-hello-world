@@ -7,16 +7,16 @@ pipeline {
         maven "Maven3"
     }
     environment {
-        // This can be nexus3 or nexus2
+
         NEXUS_VERSION = "nexus3"
-        // This can be http or https
+
         NEXUS_PROTOCOL = "http"
-        // Where your Nexus is running
-        NEXUS_URL = "localhost:8081"
-        // Repository where we will upload the artifact
-        NEXUS_REPOSITORY = "dvs-evn-spring"
-        // Jenkins credential id to authenticate to Nexus OSS
-        NEXUS_CREDENTIAL_ID = "nexus_credentials"
+
+        NEXUS_URL = "ec2-3-110-169-154.ap-south-1.compute.amazonaws.com:8081"
+
+        NEXUS_REPOSITORY = "spring-pipeline"
+
+        NEXUS_CREDENTIAL_ID = "nexus_credentails"
     }
     stages {
         stage("clone code") {
@@ -56,7 +56,7 @@ pipeline {
                             protocol: NEXUS_PROTOCOL,
                             nexusUrl: NEXUS_URL,
                             groupId: pom.groupId,
-                            version: '${BUILD_NUMBER}',
+                            version: pom.version,
                             repository: NEXUS_REPOSITORY,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
