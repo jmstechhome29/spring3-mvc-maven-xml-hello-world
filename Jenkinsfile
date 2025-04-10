@@ -1,7 +1,6 @@
 pipeline {
-    agent any
+    agent any  
     tools {
-        // Note: this should match with the tool name configured in your jenkins instance (JENKINS_URL/configureTools/)
         maven "maven3"
     }
     environment {
@@ -19,24 +18,17 @@ pipeline {
     stages {
         stage("clone code") {
             steps {
-                script {
-                    // Let's clone the source
-                    git 'https://github.com/ybmadhu/spring3-mvc-maven-xml-hello-world.git';
+					git credentialsId: 'github_credentials', url: 'https://github.com/jmstechhome29/spring3-mvc-maven-xml-hello-world.git'
                 }
             }
-        }
         stage("mvn build") {
             steps {
-                script {
-                    // If you are using Windows then you should use "bat" step
-                    // Since unit testing is out of the scope we skip them
-                    bat(/${MAVEN_HOME}\bin\mvn -Dmaven.test.failure.ignore clean package/)
+                     sh "mvn clean package"
                 }
             }
-        }
         stage("publish to nexus") {
-            steps {
-                script {
+		    steps {
+		     script{
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     pom = readMavenPom file: "pom.xml";
                     // Find built artifact under target folder
@@ -73,8 +65,10 @@ pipeline {
                     } else {
                         error "*** File: ${artifactPath}, could not be found";
                     }
-                }
+					}
             }
         }
-    }
+	}
 }
+
+
