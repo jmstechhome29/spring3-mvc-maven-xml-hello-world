@@ -15,6 +15,6 @@ jobs:
     - name: Build with Maven
       run: mvn package 
     - name: Get version
-      run: $project_version = mvn help:evaluate -Dexpression=project.version -q -DforceStdout; echo "project_version=$project_version" >> $Env:GITHUB_ENV
+      run: $project_version = mvn help:evaluate -Dexpression=project.version -q -DforceStdout; echo "project_version = $project_version" >> $Env:GITHUB_ENV
     - name: deploy into tomcat 
       run: curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} -T /home/runner/work/spring3-mvc-maven-xml-hello-world/spring3-mvc-maven-xml-hello-world/target/spring3-mvc-maven-xml-hello-world-1.10.war 'http://ec2-65-1-134-59.ap-south-1.compute.amazonaws.com:8081/manager/text/deploy?path=/github_action_spring&update=true'
