@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
@@ -20,4 +20,4 @@ jobs:
     - name: print version from pom.xml
       run: echo "version = ${{ steps.pom-version.outputs.version }}"
     - name: deploy into tomcat 
-      run: curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} -T /home/ec2-user/actions-runner/_work/spring3-mvc-maven-xml-hello-world/spring3-mvc-maven-xml-hello-world/target/spring3-mvc-maven-xml-hello-world-1.10.war 'http://ec2-65-1-134-59.ap-south-1.compute.amazonaws.com:8081/manager/text/deploy?path=/github_action_spring&update=true'
+      run: curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} -T /home/runner/work/spring3-mvc-maven-xml-hello-world/spring3-mvc-maven-xml-hello-world/target/spring3-mvc-maven-xml-hello-world-1.10.war 'http://ec2-65-1-134-59.ap-south-1.compute.amazonaws.com:8081/manager/text/deploy?path=/github_action_spring&update=true'
