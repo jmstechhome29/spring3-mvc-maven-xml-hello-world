@@ -17,7 +17,7 @@ jobs:
     - name: get-pom-version
       id: pom-version
       uses: PERES-Richard/maven-get-version-action@v3.0.0
-    - name: print version
+    - name: print version from pom.xml
       run: echo "version = ${{ steps.pom-version.outputs.version }}"
     - name: deploy into tomcat 
       run: curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} -T /home/ec2-user/actions-runner/_work/spring3-mvc-maven-xml-hello-world/spring3-mvc-maven-xml-hello-world/target/spring3-mvc-maven-xml-hello-world-1.10.war 'http://ec2-65-1-134-59.ap-south-1.compute.amazonaws.com:8081/manager/text/deploy?path=/github_action_spring&update=true'
