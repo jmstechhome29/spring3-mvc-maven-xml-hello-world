@@ -41,21 +41,21 @@
  
   <div class="row">
 	<div class="col-md-4">
-		<h2>Heading</h2>
+		<h2>TOOL1</h2>
 		<p>Docker</p>
 		<p>
 			<a class="btn btn-default" href="#" role="button">View details</a>
 		</p>
 	</div>
 	<div class="col-md-4">
-		<h2>Heading</h2>
+		<h2>TOOL2</h2>
 		<p>Kubernetes</p>
 		<p>
 			<a class="btn btn-default" href="#" role="button">View details</a>
 		</p>
 	</div>
 	<div class="col-md-4">
-		<h2>Heading</h2>
+		<h2>TOOL3</h2>
 		<p>Terraform</p>
 		<p>
 			<a class="btn btn-default" href="#" role="button">View details</a>
