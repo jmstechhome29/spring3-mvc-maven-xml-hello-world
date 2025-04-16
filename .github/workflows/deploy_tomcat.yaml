@@ -21,4 +21,4 @@ jobs:
     - name: Show extracted Maven project version
       run: echo ${{ steps.project.outputs.version }}
     - name: deploy into tomcat 
-      run: curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} -T /home/runner/work/spring3-mvc-maven-xml-hello-world/spring3-mvc-maven-xml-hello-world/target/spring3-mvc-maven-xml-hello-world-${{ steps.project.outputs.version }}.war 'http://ec2-65-1-134-59.ap-south-1.compute.amazonaws.com:8081/manager/text/deploy?path=/github_action_spring&update=true'
+      run: curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} -T /home/runner/work/spring3-mvc-maven-xml-hello-world/spring3-mvc-maven-xml-hello-world/target/spring3-mvc-maven-xml-hello-world-${{ steps.project.outputs.version }}.war http://3.110.107.112:8081/manager/text/deploy?path=/github_action_spring&update=true'
